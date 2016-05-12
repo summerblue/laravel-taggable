@@ -3,7 +3,7 @@ Laravel Taggable
 
 ## Introduction
 
-> 中文文档和讨论请见这里：
+
 
 Tag support for Laravel Eloquent models using Taggable Trait.
 
@@ -18,6 +18,8 @@ User:
 > Notice: This projcet only tested and intended only support 5.1 LTS.
 
 :heart:  This project is maintained by [@Summer](https://github.com/summerblue), member of [The EST Group](http://estgroupe.com).
+
+中文文档和讨论请见这里：https://phphub.org/topics/2123
 
 ## Baum Nested Sets
 
