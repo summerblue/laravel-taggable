@@ -88,7 +88,7 @@ Tag::create(['标签!名']);
 ### Composer install package
 
 ```shell
-composer require estgroupe/laravel-taggable "~5.1.*"
+composer require estgroupe/laravel-taggable "5.1.*"
 ```
 
 ### Config and Migration
