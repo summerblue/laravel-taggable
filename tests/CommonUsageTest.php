@@ -19,6 +19,9 @@ class CommonUsageTest extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
+        $app['config']->set('taggable.tags_table_name', 'tags');
+        $app['config']->set('taggable.taggables_table_name', 'taggables');
+
         $app['config']->set('database.default', 'testbench');
         $app['config']->set('database.connections.testbench', [
             'driver'   => 'sqlite',
@@ -124,7 +127,7 @@ class CommonUsageTest extends TestCase
     // Test is_tagged
     public function test_is_tagged_label()
     {
-        config(['tagging.is_tagged_label_enable' => true]);
+        config(['taggable.is_tagged_label_enable' => true]);
 
         $stub = Stub::create(['name'=>123]);
 

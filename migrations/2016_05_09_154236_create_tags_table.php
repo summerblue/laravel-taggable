@@ -7,7 +7,7 @@ class CreateTagsTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('tagging_tags', function(Blueprint $table) {
+		Schema::create(config('taggable.tags_table_name'), function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('slug', 255)->unique();
 			$table->string('name', 255)->unique();
@@ -23,9 +23,9 @@ class CreateTagsTable extends Migration {
 			$table->integer('depth')->nullable();
 		});
 
-		Schema::create('tagging_tagged', function(Blueprint $table) {
+		Schema::create(config('taggable.taggables_table_name'), function(Blueprint $table) {
 			$table->increments('id');
-			if(config('tagging.primary_keys_type') == 'string') {
+			if(config('taggable.primary_keys_type') == 'string') {
 				$table->string('taggable_id', 36)->index();
 			} else {
 				$table->integer('taggable_id')->unsigned()->index();
@@ -34,14 +34,14 @@ class CreateTagsTable extends Migration {
 			$table->integer('tag_id')->unsigned()->index();
 
             $table->foreign('tag_id')
-                ->references('id')->on('tagging_tags')
+                ->references('id')->on(config('taggable.tags_table_name'))
                 ->onDelete('cascade');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('tagging_tags');
-		Schema::drop('tagging_tagged');
+		Schema::drop(config('taggable.tags_table_name'));
+		Schema::drop(config('taggable.taggables_table_name'));
 	}
 }

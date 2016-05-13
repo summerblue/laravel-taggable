@@ -20,6 +20,9 @@ class TagTest extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
+        $app['config']->set('taggable.tags_table_name', 'tags');
+        $app['config']->set('taggable.taggables_table_name', 'taggables');
+
         $app['config']->set('database.default', 'testbench');
         $app['config']->set('database.connections.testbench', [
             'driver'   => 'sqlite',

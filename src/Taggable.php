@@ -64,7 +64,7 @@ trait Taggable
 
     public function tags()
     {
-        return $this->morphToMany(static::$taggingUtility->tagModelString(), 'taggable', 'tagging_tagged');
+        return $this->morphToMany(static::$taggingUtility->tagModelString(), 'taggable');
     }
 
 	/**
@@ -245,7 +245,7 @@ trait Taggable
 		}
 		static::$taggingUtility->incrementCount($tag, 1);
 
-		if (config('tagging.is_tagged_label_enable')
+		if (config('taggable.is_tagged_label_enable')
 			&& $this->is_tagged != 'yes'
 		) {
 			$this->is_tagged = 'yes';
@@ -270,7 +270,7 @@ trait Taggable
 			static::$taggingUtility->decrementCount($tag, 1);
 		}
 
-		if (config('tagging.is_tagged_label_enable')
+		if (config('taggable.is_tagged_label_enable')
 			&& $this->is_tagged != 'no'
 			&& $this->tags()->count() <= 0
 		) {
@@ -289,11 +289,13 @@ trait Taggable
 	 */
 	public static function existingTags()
 	{
+		$tags_table_name = config('taggable.tags_table_name');
+
 		return Tagged::distinct()
-			->join('tagging_tags', 'tag_id', '=', 'tagging_tags.id')
+			->join($tags_table_name, 'tag_id', '=', $tags_table_name.'.id')
 			->where('taggable_type', '=', (new static)->getMorphClass())
 			->orderBy('tag_id', 'ASC')
-			->get(array('tagging_tags.slug as slug', 'tagging_tags.name as name', 'tagging_tags.count as count'));
+			->get(array($tags_table_name.'.slug as slug', $tags_table_name.'.name as name', $tags_table_name.'.count as count'));
 	}
 
 	/**
@@ -303,7 +305,7 @@ trait Taggable
 	{
 		return isset(static::$untagOnDelete)
 			? static::$untagOnDelete
-			: config('tagging.untag_on_delete');
+			: config('taggable.untag_on_delete');
 	}
 
 	/**
@@ -311,7 +313,7 @@ trait Taggable
 	 */
 	public static function shouldDeleteUnused()
 	{
-		return config('tagging.delete_unused_tags');
+		return config('taggable.delete_unused_tags');
 	}
 
     /**

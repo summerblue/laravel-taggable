@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  */
 class Tagged extends Eloquent
 {
-	protected $table = 'tagging_tagged';
+	protected $table;
 	public $timestamps = false;
 	protected $fillable = ['tag_name', 'tag_slug'];
 	protected $taggingUtility;
 
 	public function __construct(array $attributes = array())
 	{
+		$this->table = config('taggable.taggables_table_name');
+
 		parent::__construct($attributes);
 
 		$this->taggingUtility = app(TaggingUtility::class);

@@ -32,4 +32,9 @@ return array(
 	// Then you can call: Article::where('is_tagged', 'yes')->get()
 	// to get all tagged $articles.
 	'is_tagged_label_enable' => false,
+
+	// customize table name
+	'tags_table_name' => 'tags',
+	'taggables_table_name' => 'taggables',
+
 );

@@ -2,7 +2,7 @@
 	"name": "estgroupe/laravel-taggable",
 	"description": "Taggable Trait for using tag inside Laravel Eloquent models, with Baum's Nested Set pattern support.",
 	"license": "MIT",
-	"homepage": "https://smartersoftware.net/packages/laravel-tagging-taggable",
+	"homepage": "https://github.com/summerblue/laravel-taggable",
 	"keywords": ["tag", "tags", "tagging", "laravel", "taggable", "tagged", "eloquent", "laravel5"],
 	"authors": [
 		{

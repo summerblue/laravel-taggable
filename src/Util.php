@@ -215,7 +215,7 @@ class Util implements TaggingUtility
 	 */
 	public function tagModelString()
 	{
-		return config('tagging.tag_model', '\EstGroupe\Taggable\Model\Tag');
+		return config('taggable.tag_model', '\EstGroupe\Taggable\Model\Tag');
 	}
 
 	// Check DB Slug Dulplication
@@ -234,7 +234,7 @@ class Util implements TaggingUtility
 	// Should be call before insert into database
 	public function normalizeAndUniqueSlug($tag_name)
 	{
-		$normalizer = config('tagging.normalizer', static::class.'::slug');
+		$normalizer = config('taggable.normalizer', static::class.'::slug');
 		// Normalize
 		$slug_string = call_user_func($normalizer, $tag_name);
 		// Make sure slug is unique
@@ -245,7 +245,7 @@ class Util implements TaggingUtility
 	public function normalizeTagName($string)
 	{
 		$string = call_user_func('\Illuminate\Support\Str::title', $string);
-		$normalizer = config('tagging.displayer', static::class.'::tagName');
+		$normalizer = config('taggable.displayer', static::class.'::tagName');
 		// Normalize
 		return call_user_func($normalizer, $string);
 	}

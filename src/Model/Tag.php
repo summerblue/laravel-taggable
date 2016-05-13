@@ -10,7 +10,7 @@ use Baum\Node;
 // class Tag extends Eloquent
 class Tag extends Node
 {
-	protected $table = 'tagging_tags';
+	protected $table;
 	public $timestamps = false;
 	protected $softDelete = false;
 	public $fillable = ['name'];
@@ -21,9 +21,11 @@ class Tag extends Node
 	 */
 	public function __construct(array $attributes = array())
 	{
+		$this->table = config('taggable.tags_table_name');
+
 		parent::__construct($attributes);
 
-		if(function_exists('config') && $connection = config('tagging.connection')) {
+		if(function_exists('config') && $connection = config('taggable.connection')) {
 			$this->connection = $connection;
 		}
 
