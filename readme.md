@@ -105,7 +105,7 @@ php artisan vendor:publish --provider="EstGroupe\Taggable\Providers\TaggingServi
 php artisan migrate
 ```
 
-> Please take a close look at file: `config/tagging.php`
+> Please take a close look at file: `config/taggable.php`
 
 ### Create your own Tag.php
 
@@ -122,7 +122,7 @@ class Tag extends TaggableTag
 }
 ```
 
-Change `config/tagging.php` file：
+Change `config/taggable.php` file：
 
 ```
 	'tag_model'=>'\App\Models\Tag',
@@ -161,7 +161,7 @@ $article->is_tagged
 $taggedArticles = Article::where('is_tagged', 'yes')->get()
 ```
 
-First modify `config/tagging.php`：
+First modify `config/taggable.php`：
 
 ```php
 'is_tagged_label_enable' => true,
