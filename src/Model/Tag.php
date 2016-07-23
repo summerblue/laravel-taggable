@@ -86,7 +86,7 @@ class Tag extends Node
 	 */
 	public function setNameAttribute($value)
 	{
-		$this->attributes['name'] = $this->taggingUtility->normalizeTagName($value);
+		$this->attributes['name'] = app(TaggingUtility::class)->normalizeTagName($value);
 	}
 
 	/**
