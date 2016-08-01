@@ -13,7 +13,7 @@ class Tag extends Node
 	protected $table;
 	public $timestamps = false;
 	protected $softDelete = false;
-	public $fillable = ['name'];
+	//public $fillable = ['name'];
 	protected $taggingUtility;
 
 	/**
