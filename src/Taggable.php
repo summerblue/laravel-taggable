@@ -53,6 +53,15 @@ trait Taggable
     }
 
     /**
+     * Tag 类型
+     * @return mixed
+     */
+    protected function tagType()
+    {
+        return "";
+    }
+
+    /**
      * Return collection of tagged rows related to the tagged model
      *
      * @return Illuminate\Database\Eloquent\Collection
