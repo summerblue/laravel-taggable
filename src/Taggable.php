@@ -358,3 +358,26 @@ trait Taggable
             } else {
                 $this->untag();
             }
+        }
+    }
+
+    /**
+     * by @CJ
+     * Sync tags with tag_id array
+     *
+     * @param $tag_ids tag_id array
+     */
+    public function tagWithTagIds($tag_ids = [])
+    {
+        if (count($tag_ids) <= 0) {
+            return;
+        }
+
+        $model = static::$taggingUtility->tagModelString();
+        $tag_names = $model::byTagIds($tag_ids)->pluck('name')->all();
+
+        $this->retag($tag_names);
+    }
+
+
+}
