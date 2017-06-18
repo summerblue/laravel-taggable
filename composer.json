@@ -1,6 +1,6 @@
 {
-	"name": "estgroupe/laravel-taggable",
-	"description": "Taggable Trait for using tag inside Laravel Eloquent models, with Baum's Nested Set pattern support.",
+	"name": "zgldh/laravel-taggable",
+	"description": "Extend from summerblue/laravel-taggable to meed Laravel 5.4 needs.",
 	"license": "MIT",
 	"homepage": "https://github.com/summerblue/laravel-taggable",
 	"keywords": ["tag", "tags", "tagging", "laravel", "taggable", "tagged", "eloquent", "laravel5"],
@@ -8,6 +8,10 @@
 		{
 			"name": "Charlie Jade",
 			"email": "cj@estgroupe.com"
+		},
+		{
+			"name": "zgldh",
+			"email": "zgldh@hotmail.com"
 		}
 	],
 	"require": {

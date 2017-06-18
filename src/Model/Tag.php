@@ -13,7 +13,6 @@ class Tag extends Node
 	protected $table;
 	public $timestamps = false;
 	protected $softDelete = false;
-	public $fillable = ['name'];
 	protected $taggingUtility;
 
 	/**
@@ -23,13 +22,13 @@ class Tag extends Node
 	{
 		$this->table = config('taggable.tags_table_name');
 
-		parent::__construct($attributes);
-
 		if(function_exists('config') && $connection = config('taggable.connection')) {
 			$this->connection = $connection;
 		}
 
 		$this->taggingUtility = app(TaggingUtility::class);
+		
+		parent::__construct($attributes);
 	}
 
 	public function isUserUpdateSlug($options)
