@@ -153,7 +153,7 @@ class Util implements TaggingUtility
 		// Normalizer tag name
 		$str = static::tagName($str);
 
-		$str = app()->make(Pinyin::class)->permlink($str);
+		$str = app()->make(Pinyin::class)->permalink($str);
 
 		return $options['lowercase'] ? mb_strtolower($str, 'UTF-8') : $str;
 	}
